@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('seances', function (Blueprint $table) {
             $table->id();
-            $table->string('login');
-            $table->string('password');
-            $table->string('email')->unique();
-            $table->foreignId('role_id')->constrained()
+            $table->text('contenu');
+            $table->date('dateSeance');
+            $table->string('heureDebut');
+            $table->string('heureFin');
+            $table->float('duree');
+            $table->boolean('status')->default(false);
+            $table->foreignId('cour_id')->constrained()
                                         ->onDelete('cascade')
                                         ->onUpdate('cascade');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,9 +31,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['role_id']);
+        Schema::table('seances', function (Blueprint $table) {
+            $table->dropColumn('cour_id');
         });
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('seances');
     }
 };

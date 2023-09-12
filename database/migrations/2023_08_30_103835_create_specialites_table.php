@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('specialites', function (Blueprint $table) {
             $table->id();
-            $table->string('login');
-            $table->string('password');
-            $table->string('email')->unique();
-            $table->foreignId('role_id')->constrained()
+            $table->string('intitule');
+            $table->foreignId('niveau_id')->constrained()
                                         ->onDelete('cascade')
                                         ->onUpdate('cascade');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+          
             $table->timestamps();
         });
     }
@@ -29,10 +26,10 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['role_id']);
+    { 
+        Schema::table('specialites', function (Blueprint $table) {
+            $table->dropColumn('niveau_id');
         });
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('specialites');
     }
 };
