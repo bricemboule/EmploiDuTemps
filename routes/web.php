@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,42 @@ Route::get('/logout', [AuthController::class, 'authlogout']);
 Route::get('admin/dashboard', function(){
 
     return view('layouts.master');
+});
+
+Route::group(['middleware'=> 'admin'], function(){
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('admin/user', [DashboardController::class, 'dashboard']);
+    Route::get('admin/enseignant', [DashboardController::class, 'dashboard']);
+    Route::get('admin/etudiant', [DashboardController::class, 'dashboard']);
+    Route::get('admin/cours', [DashboardController::class, 'dashboard']);
+    Route::get('admin/parent', [DashboardController::class, 'dashboard']);
+});
+
+Route::group(['middleware'=> 'directeurAcademique'], function(){
+    Route::get('dac/dashboard', [DashboardController::class, 'dashboard']);
+});
+
+Route::group(['middleware'=> 'directeurGenerale'], function(){
+    Route::get('dg/dashboard', [DashboardController::class, 'dashboard']);
+});
+
+Route::group(['middleware'=> 'gestionnaireScolarite'], function(){
+    Route::get('scolarite/dashboard', [DashboardController::class, 'dashboard']);
+});
+
+Route::group(['middleware'=> 'gestionnaireStock'], function(){
+    Route::get('stock/dashboard', [DashboardController::class, 'dashboard']);
+});
+
+Route::group(['middleware'=> 'gestionnaireCahierTexte'], function(){
+    Route::get('cahierTexte/dashboard', [DashboardController::class, 'dashboard']);
+});
+
+Route::group(['middleware'=> 'etudiant'], function(){
+    Route::get('etudiant/dashboard', [DashboardController::class, 'dashboard']);
+   
+});
+
+Route::group(['middleware'=> 'enseignant'], function(){
+    Route::get('enseigant/dashboard', [DashboardController::class, 'dashboard']);
 });
