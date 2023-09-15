@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -27,11 +28,18 @@ Route::get('admin/dashboard', function(){
 
 Route::group(['middleware'=> 'admin'], function(){
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+
+    Route::get('admin/utilisateur/ajouter', [AdminController::class, 'ajouter']);
+    Route::post('admin/utilisateur/creer', [AdminController::class, 'inserer']);
+    Route::get('admin/utilisateur/modifier/{id}', [AdminController::class, 'modifier']);
+    
+
     Route::get('admin/user', [DashboardController::class, 'dashboard']);
     Route::get('admin/enseignant', [DashboardController::class, 'dashboard']);
     Route::get('admin/etudiant', [DashboardController::class, 'dashboard']);
     Route::get('admin/cours', [DashboardController::class, 'dashboard']);
     Route::get('admin/parent', [DashboardController::class, 'dashboard']);
+    Route::get('admin/classe', [DashboardController::class, 'dashboard']);
 });
 
 Route::group(['middleware'=> 'directeurAcademique'], function(){
