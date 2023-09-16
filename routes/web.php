@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ClasseController;
 use App\Http\Controllers\admin\CourController;
 use App\Http\Controllers\admin\SalleController;
 use App\Http\Controllers\AuthController;
@@ -46,6 +47,15 @@ Route::group(['middleware'=> 'admin'], function(){
     Route::post('admin/salle/modifier/{id}', [SalleController::class, 'edit']);
     Route::get('admin/salle/lister', [SalleController::class, 'lister']);
     Route::get('admin/salle/supprimer/{id}', [SalleController::class, 'delete']);
+
+    //Classes
+    Route::get('admin/classe/ajouter', [ClasseController::class, 'ajouter']);
+    Route::post('admin/classe/creer', [ClasseController::class, 'inserer']);
+    Route::get('admin/classe/modifier/{id}', [ClasseController::class, 'modifier']);
+    Route::post('admin/classe/modifier/{id}', [ClasseController::class, 'edit']);
+    Route::get('admin/classe/lister', [ClasseController::class, 'lister']);
+    Route::get('admin/classe/supprimer/{id}', [ClasseController::class, 'delete']);
+
     //Cours
     Route::get('admin/cours', [DashboardController::class, 'dashboard']);
     Route::get('admin/cours/ajouter', [CourController::class, 'ajouter']);

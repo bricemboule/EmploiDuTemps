@@ -13,6 +13,7 @@ class AdminController extends Controller
     public function ajouter(){
 
         $roles = Role::all();
+        
         return view('admin.utilisateur.ajouter',compact('roles'));
     }
 

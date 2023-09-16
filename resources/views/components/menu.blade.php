@@ -31,8 +31,8 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <a href="{{url('admin/classe')}}" class="nav-link @if(Request::segment(2) == 'classe') active @endif">
+        <li class="nav-item @if(Request::segment(2) == 'salle') menu-open @endif" >
+            <a href="{{url('admin/classe')}}" class="nav-link @if(Request::segment(2) == 'salle') active @endif">
                 <i class="fa-solid fa-home"></i>
                 <p>
                     Salles
@@ -53,7 +53,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item @if(Request::segment(2) == 'classe') menu-open @endif">
             <a href="{{url('admin/classe')}}" class="nav-link @if(Request::segment(2) == 'classe') active @endif">
                 <i class="fa-solid fa-pen-to-square"></i>
                 <p>
