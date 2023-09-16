@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         $remember = !empty($resquest->remeber) ? true : false;
         if(Auth::attempt(['login'=>$resquest->login, 'password'=>$resquest->password], $remember)){
-        
+            
             switch (Auth::user()->role->intitule) {
                 case 'admin' : 
                     return redirect('admin/dashboard');

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('salles', function (Blueprint $table) {
             $table->id();
             $table->string('nomSalle');
+            $table->integer('capacite');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
