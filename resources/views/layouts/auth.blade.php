@@ -17,6 +17,7 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Connectez-vous à votre compte</p>
+                @include('message')
                 <form action="{{url('login')}}" method="post">
                     {{@csrf_field()}}
                     <div class="input-group py-3">

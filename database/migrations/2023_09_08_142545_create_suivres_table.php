@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('suivre', function (Blueprint $table) {
+        Schema::create('suivres', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cour_id')->constrained()
                                             ->onDelete('cascade')
@@ -28,7 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('suivre', function (Blueprint $table) {
+        Schema::table('suivres', function (Blueprint $table) {
             $table->dropColumn(['cour_id', 'classe_id']);
         });
         Schema::dropIfExists('suivre');

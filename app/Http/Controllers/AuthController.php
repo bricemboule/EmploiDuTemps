@@ -8,20 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    
     public function login(){
-
-      if (!empty(Auth::check())){
-        return redirect('admin/dashboard');
-      }
         return view('welcome');
     }
 
-    public function authLogin(Request $resquest){
+    public function authLogin(Request $request){
+       
+        $remember = !empty($request->remember) ? true : false;
+        if(Auth::attempt(['login'=>$request->login, 'password'=>$request->password], true)){
+           
 
-        $remember = !empty($resquest->remeber) ? true : false;
-        if(Auth::attempt(['login'=>$resquest->login, 'password'=>$resquest->password], $remember)){
-            
             switch (Auth::user()->role->intitule) {
                 case 'admin' : 
                     return redirect('admin/dashboard');

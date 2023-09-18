@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function dashboard(){
+        
 
         $user = DB::table('users')
                             ->where('status', 1)
@@ -37,13 +38,13 @@ class DashboardController extends Controller
                 return view('admin.dashboard', compact(['user','salle', 'enseignant', 'etudiant','specialite']));
                 break;
             case 'directeur general' :
-                return view('dg.dashboard');
+                return view('dg.dashboard',compact(['user','salle', 'enseignant', 'etudiant','specialite']));
                 break;
             case 'directeur academique' :
-                return view('dac.dashboard');
+                return view('dac.dashboard',compact(['salle', 'enseignant', 'etudiant','specialite']));
                 break;
             case 'gestionnaire scolarite' :
-                return view('scolarite.dashboard');
+                return view('scolarite.dashboard',compact(['user','salle', 'enseignant', 'etudiant','specialite']));
                 break;
             case 'gestionnaire stock' :
                 return view('stock.dashboard');
@@ -55,7 +56,7 @@ class DashboardController extends Controller
                 return view('enseignant.dashboard');
                 break;
             case 'gestionnaire cahier texte' :
-                return view('cahierTexte.dashboard');
+                return view('cahierTexte.dashboard',compact(['salle', 'enseignant', 'etudiant','specialite']));
                 break;
             default :
                 return redirect()->back()->with('error', 'Veuillez entrer les informations correctes');

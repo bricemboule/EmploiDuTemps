@@ -18,7 +18,7 @@ class AdminController extends Controller
     }
 
     public function inserer(Request $request){
-        //dd($request);
+        
         request()->validate(['email'=> 'required|unique:users,email']);
         $user = new User();
         $role = Role::where('intitule', $request->role)->first();
@@ -28,10 +28,11 @@ class AdminController extends Controller
         $user->prenom = trim($request->prenom);
         $user->telephone = $request->phone;
         $user->login = trim($request->login);
-        $user->password =Hash::make( $request->nom);
+        $user->password =Hash::make($request->password);
         $user->email = trim($request->email);
         $user->role_id = $role->id;
         $user->photo = trim($request->photo);
+       
         $user->save();
 
         return redirect('admin/utilisateur/lister');

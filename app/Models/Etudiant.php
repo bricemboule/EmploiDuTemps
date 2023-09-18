@@ -9,7 +9,7 @@ class Etudiant extends Model
 {
     use HasFactory;
 
-    public function classe(){
+    public function classes(){
 
         return $this->belongsToMany(Classe::class, 'inscrire', 'etudiant_id', 'classe_id');
     }

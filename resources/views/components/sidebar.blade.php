@@ -26,7 +26,7 @@
                         </li>
                                 
                     </ul>
-                <a href="#" class="btn btn-primary btn-block"><b>Se Deconnecter</b></a>
+                <a href="{{url('logout')}}" class="btn btn-primary btn-block"><b>Se Deconnecter</b></a>
             </div>
 
       

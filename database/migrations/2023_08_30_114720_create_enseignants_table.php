@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('grade');
             $table->string('login');
             $table->string('password');
-            $table->string('photo');
+            //$table->string('photo');
             $table->timestamps();
         });
     }

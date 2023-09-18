@@ -14,21 +14,17 @@
                     </div>
         </div>
         <div class="card card-success">
-            <div class="card-header">
-                <h3 class="card-title">Nouveau cours</h3>
-            </div>
-
 
             <form action="{{url('admin/cours/creer')}}" method="post">
                   {{@csrf_field()}}
                 <div class="card-body">
                    <div class="row">
                         <div class="form-group col-sm-6">
-                            <label >Code : </label>
+                            <label >Code<span style="color: red">*</span> : </label>
                             <input type="text" class="form-control"  name = "code" placeholder="votre prenom" required>
                         </div>
                          <div class="form-group col-sm-6">
-                            <label >Intitule : </label>
+                            <label >Intitule<span style="color: red">*</span> : </label>
                             <input type="text" class="form-control" name="intitule" placeholder="votre nom" required>
                         </div>
                    </div>
@@ -36,7 +32,7 @@
                         <div class="col-sm-6">
 
                             <div class="form-group">
-                                <label>Semestre : </label>
+                                <label>Semestre<span style="color: red">*</span> : </label>
                                 <select class="form-control" name="semestre">
                                     <option value=""></option>
                                     <option value="SEMESTRE 1">SEMESTRE 1</option>
@@ -45,12 +41,24 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label >Volume total : </label>
+                            <label >Volume total<span style="color: red">*</span> : </label>
                             <input type="number" class="form-control" name="volume" placeholder="votre nom" required>
                         </div>
                     </div>
-                  
-
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Classes <span style="color: red">*</span> :</label> 
+                           @foreach ($classes as $classe)
+                                <div class="form-check">
+                                    <input class="form-check-input" value="{{$classe->id}}" name="classe[]" type="checkbox">
+                                    <label class="form-check-label">{{$classe->intitule}}</label>
+                                </div>
+                           @endforeach
+                           
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-footer mx-5 mb-2">

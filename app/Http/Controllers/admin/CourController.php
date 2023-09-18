@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classe;
 use App\Models\Cour;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,9 @@ class CourController extends Controller
 {
     public function ajouter(){
 
-        return view('admin.cours.ajouter');
+        $classes = Classe::where('status', '1')->get();
+
+        return view('admin.cours.ajouter', compact('classes'));
     }
 
     public function lister(){

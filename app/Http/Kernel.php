@@ -69,7 +69,7 @@ class Kernel extends HttpKernel
         'etudiant' => \App\Http\Middleware\EtudiantMiddleware::class,
         'directeurGenerale' => \App\Http\Middleware\DirecteurGeneralMiddleware::class,
         'directeurAcademique' => \App\Http\Middleware\DirecteurAcademiqueMiddleware::class,
-        'gestionnaireScolarite' => \App\Http\Middleware\GestionnaireScolariteMiddleware::class,
+        'gestionnaireScolarite' => \App\Http\Middleware\Authenticate::class,
         'gestionnaireStock' => \App\Http\Middleware\GestionnaireStockMiddleware::class,
         'gestionnaireCahierDeTexte' => \App\Http\Middleware\GestionnaireCahierDeTexteMiddleware::class
     ];

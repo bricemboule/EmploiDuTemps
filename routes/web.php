@@ -3,9 +3,13 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\ClasseController;
 use App\Http\Controllers\admin\CourController;
+use App\Http\Controllers\admin\EnseignantController;
+use App\Http\Controllers\admin\EtudiantController;
+use App\Http\Controllers\admin\ParentController;
 use App\Http\Controllers\admin\SalleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TimeTableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,10 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/login', [AuthController::class, 'authLogin']);
 Route::get('/logout', [AuthController::class, 'authlogout']);
-Route::get('admin/dashboard', function(){
 
-    return view('layouts.master');
-});
 
 Route::group(['middleware'=> 'admin'], function(){
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
@@ -65,6 +66,30 @@ Route::group(['middleware'=> 'admin'], function(){
     Route::get('admin/cours/lister', [CourController::class, 'lister']);
     Route::post('admin/cours/delete/{id}', [CourController::class, 'delete']);
 
+     //Enseignant
+     Route::get('admin/enseignant/ajouter', [EnseignantController::class, 'ajouter']);
+     Route::post('admin/enseignant/creer', [EnseignantController::class, 'inserer']);
+     Route::get('admin/enseignant/modifier/{id}', [EnseignantController::class, 'modifier']);
+     Route::post('admin/enseignant/modifier/{id}', [EnseignantController::class, 'edit']);
+     Route::get('admin/enseignant/lister', [EnseignantController::class, 'lister']);
+     Route::get('admin/enseignant/supprimer/{id}', [EnseignantController::class, 'delete']);
+
+      //Etudiant
+    Route::get('admin/etudiant/ajouter', [EtudiantController::class, 'ajouter']);
+    Route::post('admin/etudiant/creer', [EtudiantController::class, 'inserer']);
+    Route::get('admin/etudiant/modifier/{id}', [EtudiantController::class, 'modifier']);
+    Route::post('admin/etudiant/modifier/{id}', [EtudiantController::class, 'edit']);
+    Route::get('admin/etudiant/lister', [EtudiantController::class, 'lister']);
+    Route::get('admin/etudiant/supprimer/{id}', [EtudiantController::class, 'delete']);
+
+     //Parent
+     Route::get('admin/parent/ajouter', [ParentController::class, 'ajouter']);
+     Route::post('admin/parent/creer', [ParentController::class, 'inserer']);
+     Route::get('admin/parent/modifier/{id}', [ParentController::class, 'modifier']);
+     Route::post('admin/parent/modifier/{id}', [ParentController::class, 'edit']);
+     Route::get('admin/parent/lister', [ParentController::class, 'lister']);
+     Route::get('admin/parent/supprimer/{id}', [ParentController::class, 'delete']);
+
     Route::get('admin/user', [DashboardController::class, 'dashboard']);
     Route::get('admin/enseignant', [DashboardController::class, 'dashboard']);
     Route::get('admin/etudiant', [DashboardController::class, 'dashboard']);
@@ -81,9 +106,15 @@ Route::group(['middleware'=> 'directeurGenerale'], function(){
     Route::get('dg/dashboard', [DashboardController::class, 'dashboard']);
 });
 
+
 Route::group(['middleware'=> 'gestionnaireScolarite'], function(){
     Route::get('scolarite/dashboard', [DashboardController::class, 'dashboard']);
+
+    //Emploi du temps
+
+    Route::get('scolarite/timetable/ajouter', [TimeTableController::class, 'ajouter']);
 });
+
 
 Route::group(['middleware'=> 'gestionnaireStock'], function(){
     Route::get('stock/dashboard', [DashboardController::class, 'dashboard']);
