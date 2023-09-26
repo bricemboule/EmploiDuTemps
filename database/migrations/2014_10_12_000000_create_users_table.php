@@ -15,12 +15,21 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
+            $table->string('matricule')->unique()->nullable();
             $table->string('telephone');
+            $table->string('telephone2')->nullable();
+            $table->date('dateNaissance')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('lieu')->nullable();
             $table->string('email')->unique();
             $table->string('login');
             $table->string('password');
             $table->string('photo');
             $table->foreignId('role_id')->constrained()
+                                        ->onDelete('cascade')
+                                        ->onUpdate('cascade');
+            $table->foreignId('classe_id')->nullable()
+                                        ->constrained()
                                         ->onDelete('cascade')
                                         ->onUpdate('cascade');
             $table->boolean('status')->default(1);
@@ -29,7 +38,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
+   
     /**
      * Reverse the migrations.
      */

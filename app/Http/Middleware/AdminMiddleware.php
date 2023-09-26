@@ -17,12 +17,15 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!empty(Auth::check())){
-            if(Auth::user()->role->intitule == "admin"){
+            if(Auth::user()->role->intitule == 'admin'){
                 return next($request);
             }else{
                 Auth::logout();
                 return redirect(url(''));
             }
+        }else{
+            Auth::logout();
+            return redirect(url(''));
         }
     }
 }

@@ -9,7 +9,11 @@ use App\Http\Controllers\admin\ParentController;
 use App\Http\Controllers\admin\SalleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\TimeTableController;
+use App\Http\Controllers\scolarite\CalendarController;
+use App\Http\Controllers\scolarite\LessonController;
+use App\Http\Controllers\scolarite\ScolariteClasseController;
+use App\Http\Controllers\scolarite\ScolariteCourController;
+use App\Http\Controllers\scolarite\TimeTableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +75,7 @@ Route::group(['middleware'=> 'admin'], function(){
      Route::post('admin/enseignant/creer', [EnseignantController::class, 'inserer']);
      Route::get('admin/enseignant/modifier/{id}', [EnseignantController::class, 'modifier']);
      Route::post('admin/enseignant/modifier/{id}', [EnseignantController::class, 'edit']);
+     Route::get('admin/enseignant/{id}/cours', [EnseignantController::class, 'cours']);
      Route::get('admin/enseignant/lister', [EnseignantController::class, 'lister']);
      Route::get('admin/enseignant/supprimer/{id}', [EnseignantController::class, 'delete']);
 
@@ -112,7 +117,65 @@ Route::group(['middleware'=> 'gestionnaireScolarite'], function(){
 
     //Emploi du temps
 
-    Route::get('scolarite/timetable/ajouter', [TimeTableController::class, 'ajouter']);
+    Route::get('scolarite/emploiDuTemps/programmer', [TimeTableController::class, 'programmer']);
+    Route::get('scolarite/emploiDuTemps/ajouter', [LessonController::class, 'ajouterL1']);
+    //Route::get('scolarite/timetable/L1', [TimeTableController::class, 'ListerL1']);
+    Route::get('scolarite/emploiDuTemps/L1', [LessonController::class, 'lister']);
+    Route::get('scolarite/emploiDuTemps/afficher', [CalendarController::class, 'index']);
+    Route::get('scolarite/emploiDuTemps/L1/calendrier', [CalendarController::class, 'calendrier']);
+    Route::get('scolarite/emploiDuTemps/envoyer/etudiant/', [LessonController::class, 'etudiant']);
+    Route::get('scolarite/emploiDuTemps/envoyer/enseignant/', [LessonController::class, 'enseignant']);
+    Route::get('scolarite/emploiDuTemps/envoyer/etudiant/{id}', [CalendarController::class, 'etudiant']);
+    Route::get('scolarite/emploiDuTemps/envoyer/enseignant/{id}', [CalendarController::class, 'enseignant']);
+    Route::get('scolarite/emploiDuTemps/visualiser/etudiant/{id}', [CalendarController::class, 'visualiser']);
+    Route::get('scolarite/emploiDuTemps/visualiserEnseignant/{id}', [CalendarController::class, 'visualiserEnseignant']);
+    Route::get('scolarite/emploiDuTemps/L1/modifier/{id}', [LessonController::class, 'modifier']);
+    Route::post('scolarite/emploiDuTemps/L1/modifier/{id}', [LessonController::class, 'edit']);
+    Route::post('scolarite/emploiDuTemps/L1/programmer', [LessonController::class, 'save']);
+    Route::get('scolarite/emploiDuTemps/L2', [TimeTableController::class, 'ListerL2']);
+    Route::get('scolarite/emploiDuTemps/L3', [TimeTableController::class, 'ListerL3']);
+    Route::get('scolarite/emploiDuTemps/M1ACT', [TimeTableController::class, 'ListerM1ACT']);
+
+    //Cours
+    Route::get('scolarite/cours', [DashboardController::class, 'dashboard']);
+    Route::get('scolarite/cours/ajouter', [ScolariteCourController::class, 'ajouter']);
+    Route::post('scolarite/cours/creer', [ScolariteCourController::class, 'inserer']);
+    Route::get('scolarite/cours/modifier/{id}', [ScolariteCourController::class, 'modifier']);
+    Route::post('scolarite/cours/modifier/{id}', [ScolariteCourController::class, 'edit']);
+    Route::get('scolarite/cours/lister', [ScolariteCourController::class, 'lister']);
+    Route::post('scolarite/cours/delete/{id}', [ScolariteCourController::class, 'delete']);
+
+     //Classes
+     Route::get('scolarite/classe/ajouter', [ScolariteClasseController::class, 'ajouter']);
+     Route::post('scolarite/classe/creer', [ScolariteClasseController::class, 'inserer']);
+     Route::get('scolarite/classe/modifier/{id}', [ScolariteClasseController::class, 'modifier']);
+     Route::post('scolarite/classe/modifier/{id}', [ScolariteClasseController::class, 'edit']);
+     Route::get('scolarite/classe/lister', [ScolariteClasseController::class, 'lister']);
+     Route::get('scolarite/classe/supprimer/{id}', [ScolariteClasseController::class, 'delete']);
+
+    //Enseignant
+    Route::get('scolarite/enseignant/ajouter', [EnseignantController::class, 'ajouter']);
+    Route::post('scolarite/enseignant/creer', [EnseignantController::class, 'inserer']);
+    Route::get('scolarite/enseignant/modifier/{id}', [EnseignantController::class, 'modifier']);
+    Route::post('scolarite/enseignant/modifier/{id}', [EnseignantController::class, 'edit']);
+    Route::get('scolarite/enseignant/lister', [EnseignantController::class, 'lister']);
+    Route::get('scolarite/enseignant/supprimer/{id}', [EnseignantController::class, 'delete']);
+
+     //Etudiant
+   Route::get('scolarite/etudiant/ajouter', [EtudiantController::class, 'ajouter']);
+   Route::post('scolarite/etudiant/creer', [EtudiantController::class, 'inserer']);
+   Route::get('scolarite/etudiant/modifier/{id}', [EtudiantController::class, 'modifier']);
+   Route::post('scolarite/etudiant/modifier/{id}', [EtudiantController::class, 'edit']);
+   Route::get('scolarite/etudiant/lister', [EtudiantController::class, 'lister']);
+   Route::get('scolarite/etudiant/supprimer/{id}', [EtudiantController::class, 'delete']);
+
+    //Parent
+    Route::get('scolarite/parent/ajouter', [ParentController::class, 'ajouter']);
+    Route::post('scolarite/parent/creer', [ParentController::class, 'inserer']);
+    Route::get('scolarite/parent/modifier/{id}', [ParentController::class, 'modifier']);
+    Route::post('scolarite/parent/modifier/{id}', [ParentController::class, 'edit']);
+    Route::get('scolarite/parent/lister', [ParentController::class, 'lister']);
+    Route::get('scolarite/parent/supprimer/{id}', [ParentController::class, 'delete']);
 });
 
 

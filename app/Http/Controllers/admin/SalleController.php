@@ -24,6 +24,7 @@ class SalleController extends Controller
        
         $sale->nomSalle = $request->salle;
         $sale->capacite = $request->capacite;
+        $sale->status = '1';
         $sale->save();
         return redirect('admin/salle/lister');
     }

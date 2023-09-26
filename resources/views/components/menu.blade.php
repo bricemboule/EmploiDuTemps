@@ -77,29 +77,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if(Request::segment(2) == 'cours') menu-open @endif">
-                    <a href="{{url('admin/cours')}}" class="nav-link @if(Request::segment(2) == 'cours') active @endif">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                            <p>
-                                Cours
-                            </p>
-                    </a>
-                    <ul class="nav nav-treeview ml-3 mr-2">
-                        <li class="nav-item">
-                            <a href="{{url('admin/cours/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
-                            <i class="fa-solid fa-floppy-disk"></i>
-                                <p>Ajouter</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/cours/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
-                                <i class="fa-solid fa-list-ol"></i>
-                                <p>Lister</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                
                 <li class="nav-item @if(Request::segment(2) == 'enseignant') menu-open @endif">
                     <a href="{{url('admin/enseignant')}}" class="nav-link @if(Request::segment(2) == 'enseignant') active @endif">
                         <i class="fa-solid fa-chalkboard-user"></i>
@@ -122,6 +99,30 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item @if(Request::segment(2) == 'cours') menu-open @endif">
+                    <a href="{{url('admin/cours')}}" class="nav-link @if(Request::segment(2) == 'cours') active @endif">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                            <p>
+                                Cours
+                            </p>
+                    </a>
+                    <ul class="nav nav-treeview ml-3 pr-2">
+                        <li class="nav-item">
+                            <a href="{{url('admin/cours/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                                <p>Ajouter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('admin/cours/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
+                                <i class="fa-solid fa-list-ol"></i>
+                                <p>Lister</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+               
                 <li class="nav-item @if(Request::segment(2) == 'etudiant') menu-open @endif">
                     <a href="{{url('admin/etudiant')}}" class="nav-link @if(Request::segment(2) == 'etudiant') active @endif">
                         <i class="fa-solid fa-graduation-cap"></i>
@@ -189,9 +190,55 @@
                     </a>
         
                 </li>
+
+                <li class="nav-item @if(Request::segment(2) == 'classe') menu-open @endif">
+                    <a href="{{url('scolarite/classe')}}" class="nav-link @if(Request::segment(2) == 'classe') active @endif">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <p>
+                            Classes
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ml-3 mr-2">
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/classe/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                                <p>Ajouter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/classe/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
+                                <i class="fa-solid fa-list-ol"></i>
+                                <p>Lister</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item @if(Request::segment(2) == 'enseignant') menu-open @endif">
+                    <a href="{{url('scolarite/enseignant')}}" class="nav-link @if(Request::segment(2) == 'enseignant') active @endif">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <p>
+                            Enseignants
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ml-3 mr-2">
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/enseignant/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                                <p>Ajouter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/enseignant/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
+                                <i class="fa-solid fa-list-ol"></i>
+                                <p>Lister</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
     
                 <li class="nav-item @if(Request::segment(2) == 'cours') menu-open @endif">
-                    <a href="{{url('admin/cours')}}" class="nav-link @if(Request::segment(2) == 'cours') active @endif">
+                    <a href="{{url('scolarite/cours')}}" class="nav-link @if(Request::segment(2) == 'cours') active @endif">
                         <i class="fa-solid fa-pen-to-square"></i>
                             <p>
                                 Cours
@@ -199,13 +246,13 @@
                     </a>
                     <ul class="nav nav-treeview ml-3 mr-2">
                         <li class="nav-item">
-                            <a href="{{url('admin/cours/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
+                            <a href="{{url('scolarite/cours/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
                             <i class="fa-solid fa-floppy-disk"></i>
                                 <p>Ajouter</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('admin/cours/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
+                            <a href="{{url('scolarite/cours/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
                                 <i class="fa-solid fa-list-ol"></i>
                                 <p>Lister</p>
                             </a>
@@ -213,11 +260,71 @@
                     </ul>
                 </li>
                 
-                <li class="nav-item @if(Request::segment(2) == 'enseignant') menu-open @endif">
-                    <a href="{{url('admin/enseignant')}}" class="nav-link @if(Request::segment(2) == 'enseignant') active @endif">
-                        <i class="fa-solid fa-chalkboard-user"></i>
+                <li class="nav-item @if(Request::segment(2) == 'etudiant') menu-open @endif">
+                    <a href="{{url('admin/etudiant')}}" class="nav-link @if(Request::segment(2) == 'etudiant') active @endif">
+                        <i class="fa-solid fa-graduation-cap"></i>
                         <p>
-                            Enseignants
+                            Etudiants
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ml-3 mr-2">
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/etudiant/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                                <p>Ajouter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/etudiant/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
+                                <i class="fa-solid fa-list-ol"></i>
+                                <p>Lister</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item @if(Request::segment(2) == 'emploiDuTemps') menu-open @endif">
+                    <a href="{{url('admin/parent')}}" class="nav-link @if(Request::segment(2) == 'emploiDuTemps') active @endif">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        
+                        <p>
+                            Emploi du temps
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview ml-3 mr-2">
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/emploiDuTemps/programmer')}}" class="nav-link @if(Request::segment(3) == 'programmer' || Request::segment(3) == 'ajouter') active @endif">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                    <p>Programmer</p>
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('scolarite/emploiDuTemps/envoyer')}}" class="nav-link @if(Request::segment(3) == 'envoyer') active @endif">
+                                <i class="fa-regular fa-share-from-square"></i>
+                                <p>Envoyer</p>
+                            </a>
+                            <ul class="nav nav-treeview ml-3 mr-2">
+                                <li class="nav-item">
+                                    <a href="{{url('scolarite/emploiDuTemps/envoyer/etudiant')}}" class="nav-link @if(Request::segment(4) == 'etudiant') active @endif">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                        <p>Etudiant</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('scolarite/emploiDuTemps/envoyer/enseignant')}}" class="nav-link @if(Request::segment(4) == 'enseignant') active @endif">
+                                        <i class="fa-solid fa-chalkboard-user"></i>
+                                        <p>Enseignant</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('admin/parent')}}" class="nav-link @if(Request::segment(2) == 'parent') active @endif">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <p>
+                            Parents
                         </p>
                     </a>
                     <ul class="nav nav-treeview ml-3 mr-2">
@@ -234,52 +341,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item @if(Request::segment(2) == 'etudiant') menu-open @endif">
-                    <a href="{{url('admin/etudiant')}}" class="nav-link @if(Request::segment(2) == 'etudiant') active @endif">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                        <p>
-                            Etudiants
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview ml-3 mr-2">
-                        <li class="nav-item">
-                            <a href="{{url('admin/etudiant/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
-                            <i class="fa-solid fa-floppy-disk"></i>
-                                <p>Ajouter</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/etudiant/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
-                                <i class="fa-solid fa-list-ol"></i>
-                                <p>Lister</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item">
-                                    <a href="{{url('admin/parent')}}" class="nav-link @if(Request::segment(2) == 'parent') active @endif">
-                                        <i class="fa-solid fa-user-tie"></i>
-                                        <p>
-                                            Emploi du temps
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview ml-3 mr-2">
-                                        <li class="nav-item">
-                                            <a href="{{url('scolarite/timetable/ajouter')}}" class="nav-link @if(Request::segment(3) == 'ajouter') active @endif">
-                                            <i class="fa-solid fa-floppy-disk"></i>
-                                                <p>Ajouter</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{url('admin/enseignant/lister')}}" class="nav-link @if(Request::segment(3) == 'lister') active @endif">
-                                                <i class="fa-solid fa-list-ol"></i>
-                                                <p>Lister</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                </li>
+</li>
                 <li class="nav-item">
                     <a href="{{url('logout')}}" class="nav-link">
                         <i class="fa-solid fa-right-from-bracket"></i>

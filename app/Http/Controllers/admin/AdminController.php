@@ -47,7 +47,15 @@ class AdminController extends Controller
     }
 
     public function lister(){
-        $users = User::where('status', '1')->get();
+        $roleEtudiant = Role::where('intitule', 'etudiant')->first();
+       
+        $roleEnseignant = Role::where('intitule', 'enseignant')->first();
+        //dd($roleEtudiant->id);
+        $users = User::where('status', '1')
+                        ->where('role_id','<>', $roleEnseignant->id)
+                        ->where('role_id','<>', $roleEtudiant->id)
+                        ->get();
+
         return view('admin.utilisateur.lister', compact('users'));
     }
 

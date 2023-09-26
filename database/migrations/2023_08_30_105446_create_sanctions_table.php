@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('cour_id')->constrained()
                                         ->onDelete('cascade')
                                         ->onUpdate('cascade');
-            $table->foreignId('etudiant_id')->constrained()
+            $table->foreignId('user_id')->constrained()
                                             ->onDelete('cascade')
                                             ->onUpdate('cascade');
             $table->timestamps();
@@ -32,7 +32,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('sanctions', function (Blueprint $table) {
-            $table->dropColumn(['cour_id', 'etudiant_id']);
+            $table->dropColumn(['cour_id', 'user_id']);
         });
         Schema::dropIfExists('sanctions');
     }

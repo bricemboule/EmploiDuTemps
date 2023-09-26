@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Cour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,7 +17,7 @@ class EnseignantController extends Controller
 
     public function inserer(Request $request){
         //dd($request);
-        request()->validate(['email'=> 'required|unique:enseignants,email']);
+        request()->validate(['email'=> 'required|unique:users,email']);
        $enseignant = new User();
         $role = Role::where('intitule', 'enseignant')->first();
       
@@ -45,9 +46,11 @@ class EnseignantController extends Controller
     }
 
     public function lister(){
+        $role = Role::where('intitule', 'enseignant')->first();
         $enseignants = User::where('status', '1')
-                                ->where('role_id', '2')
-                                ->get();
+                            ->where('role_id', $role->id)
+                            ->get();
+        
         return view('admin.enseignant.lister', compact('enseignants'));
     }
 
@@ -89,5 +92,11 @@ class EnseignantController extends Controller
         return redirect('admin/enseignant/lister');
 
 
+    }
+
+    public function cours($id){
+
+        $cours = Cour::with('classes')->where('user_id', $id)->get();
+        return view('admin.enseignant.cours', compact('cours'));
     }
 }

@@ -11,24 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('est_programmers', function (Blueprint $table) {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('semaine_id')->constrained()
+            $table->string('jour');
+            $table->time('debut');
+            $table->time('fin');
+            $table->foreignId('cour_id')->constrained()
                                             ->onDelete('cascade')
                                             ->onUpdate('cascade');
-            $table->foreignId('cour_id')->constrained()
-                                        ->onDelete('cascade')
-                                        ->onUpdate('cascade');
             $table->foreignId('classe_id')->constrained()
                                             ->onDelete('cascade')
                                             ->onUpdate('cascade');
             $table->foreignId('salle_id')->constrained()
                                             ->onDelete('cascade')
                                             ->onUpdate('cascade');
-            $table->string('jour');
-            $table->time('heureDebut');
-            $table->time('heureFin');
-            $table->string('enseignant');
+            $table->foreignId('user_id')->constrained()
+                                            ->onDelete('cascade')
+                                            ->onUpdate('cascade');
+            $table->foreignId('semaine_id')->constrained()
+                                            ->onDelete('cascade')
+                                            ->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -38,9 +40,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('est_programmers', function (Blueprint $table) {
-            $table->dropColumn(['cour_id', 'semaine_id','specialite_id','salle_id']);
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn(['cour_id', 'classe_id', 'salle_id','enseignant_id','semaine_id']);
         });
-        Schema::dropIfExists('est_programmers');
+        Schema::dropIfExists('lessons');
     }
 };

@@ -18,12 +18,10 @@
         <div class="sidebar">
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="{{asset('images/brice.jpg')}}" class="img-circle img-size-100" alt="User Image">
-                    </div>
+                    
                     <div class="info">
                        <h3 class="profile-username text-center text-white">{{Auth::user()->nom}}</h3>
-                       <h3 class="profile-username text-center text-white">{{Auth::user()->role->intitule}}</h3>
+                       <p class="profile-username text-center text-white">{{Auth::user()->role->intitule}}</p>
                     </div>
                 </div>
 

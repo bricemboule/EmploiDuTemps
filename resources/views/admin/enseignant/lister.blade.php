@@ -27,31 +27,31 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>N°</th>
-                                            <th>Nom et Prenom</th>
-                                            <th>Téléphone</th>
-                                            <th>Téléphone 2</th>
-                                            <th>Grade</th>
-                                            <th>Email</th>
-                                            <th>Login</th>
-                                             <th>Actions</th>
+                                            <th style="text-align: center">N°</th>
+                                            <th style="text-align: center">Nom et Prenom</th>
+                                            <th style="text-align: center">Téléphone</th>
+                                            <th style="text-align: center">Téléphone 2</th>
+                                            <th style="text-align: center">Grade</th>
+                                            <th style="text-align: center">Email</th>
+                                            <th style="text-align: center">Login</th>
+                                             <th style="text-align: center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($enseignants as $enseignant)
+                                      @foreach ($enseignants as $key=>$enseignant)
                                             <tr >
-                                            <td>{{$enseignant->id}}</td>
-                                            <td>{{$enseignant->nom}} {{$enseignant->prenom}}</td>
-                                            <td>{{$enseignant->telephone}}</td>
-                                            <td>{{$enseignant->telephone2}}</td>
-                                            <td>{{$enseignant->grade}}</td>
-                                            <td>{{$enseignant->email}} </td>
-                                            <td>{{$enseignant->login}}</td>
+                                            <td style="text-align: center">{{$key + 1}}</td>
+                                            <td style="text-align: center">{{$enseignant->nom}} {{$enseignant->prenom}}</td>
+                                            <td style="text-align: center">{{$enseignant->telephone}}</td>
+                                            <td style="text-align: center">{{$enseignant->telephone2}}</td>
+                                            <td style="text-align: center">{{$enseignant->grade}}</td>
+                                            <td style="text-align: center">{{$enseignant->email}} </td>
+                                            <td style="text-align: center">{{$enseignant->login}}</td>
                                             
-                                            <td>
+                                            <td style="text-align: center">
                                                 <a href="{{url('admin/enseignant/modifier/'.$enseignant->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 <a href="{{url('admin/enseignant/supprimer/'.$enseignant->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
-                                                <a href="{{url('admin/enseignant/cours/'.$enseignant->id)}}" class="btn btn-success">Cours</a>
+                                                <a href="{{url('admin/enseignant/'.$enseignant->id.'/cours/')}}" class="btn btn-success">Cours</a>
                                             </td>
                                         </tr>
                                       @endforeach

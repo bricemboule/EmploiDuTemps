@@ -27,7 +27,7 @@ class EtudiantController extends Controller
         $role = Role::where('intitule', 'etudiant')->first();
         $etudiant->nom = trim($request->nom);
         $etudiant->prenom = trim($request->prenom);
-        $etudiant->date = trim($request->date);
+        $etudiant->dateNaissance = trim($request->date);
         $etudiant->lieu = trim($request->lieu);
         $etudiant->classe_id = $classe->id;
         $etudiant->telephone = $request->phone;
@@ -58,9 +58,15 @@ class EtudiantController extends Controller
     }
 
     public function lister(){
+
+        $role = Role::where('intitule', 'etudiant')->first();
+        
         $etudiants = User::where('status', '1')
-                            ->where('role_id', '3')
+                            ->where('role_id', $role->id)
+                            ->with('classe')
                             ->get();
+
+       
         return view('admin.etudiant.lister', compact('etudiants'));
     }
 

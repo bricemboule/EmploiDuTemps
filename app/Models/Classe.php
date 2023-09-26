@@ -29,6 +29,21 @@ class Classe extends Model
     }
 
     public function cours(){
-        return $this->belongsToMany(Cour::class, 'suivre', 'classe_id', 'cour_id');
+        return $this->belongsToMany(Cour::class, 'suivres', 'classe_id', 'cour_id');
+    }
+
+    public function lessons(){
+
+        return $this->hasMany(Lesson::class);
+    }
+
+    public function salles(){
+
+        return $this->belongsToMany(Salle::class, 'est_programmers', 'classe_id','salle_id');
+    }
+
+    public function enseignants(){
+
+        return $this->belongsToMany(User::class, 'est_programmers', 'classe_id','user_id');
     }
 }

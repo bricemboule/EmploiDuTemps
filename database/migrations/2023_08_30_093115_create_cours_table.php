@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('volumeHoraire');
             $table->float('effectue')->default(0);
             $table->float('restant')->default(0);
+            $table->foreignId('user_id')->constrained()
+                                            ->onDelete('cascade')
+                                            ->onUpdate('cascade');
            
             $table->timestamps();
         });
@@ -29,6 +32,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('cours', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
+
         Schema::dropIfExists('cours');
     }
 };

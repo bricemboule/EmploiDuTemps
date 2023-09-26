@@ -16,17 +16,23 @@ class Cour extends Model
         'semestre',
         'volumeHoraire',
         'effectue',
-        'restant'
+        'restant',
+        'user_id'
     ];
 
-    public function enseignants(){
+    public function user(){
 
-        return $this->belongsToMany(Enseignant::class, 'enseignes', 'cour_id', 'enseignant_id');
+        return $this->belongsTo(User::class);
     }
 
     public function seances(){
 
         return $this->hasMany(Seance::class);
+    }
+
+    public function lessons(){
+
+        return $this->hasMany(Lesson::class);
     }
 
     public function sanction(){
@@ -35,6 +41,12 @@ class Cour extends Model
     }
 
     public function classes(){
-        return $this->belongsToMany(Classe::class, 'suivre', 'cour_id', 'classe_id');
+        return $this->belongsToMany(Classe::class, 'suivres', 'cour_id', 'classe_id');
+    }
+
+    
+    public function semaines(){
+
+        return $this->belongsToMany(Semaine::class, 'est_programmers', 'cour_id','semaine_id');
     }
 }

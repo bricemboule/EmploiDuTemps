@@ -32,6 +32,7 @@
                                             <th class="text-center">INTITULE</th>
                                             <th class="text-center">SEMESTRE</th>
                                             <th class="text-center">CLASSE</th>
+                                            <th class="text-center">ENSEIGNANT</th>
                                             <th class="text-center">VOLUME TOTAL</th>
                                             <th class="text-center">VOLUME EFFECTUE</th>
                                             <th class="text-center">VOLUME RESTANT</th>
@@ -39,13 +40,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($cours as $cour)
+                                      @foreach ($cours as $key=>$cour)
                                             <tr >
-                                            <td class="text-center">{{$cour->id}}</td>
+                                            <td class="text-center">{{$key + 1}}</td>
                                             <td class="text-center">{{$cour->code}}</td>
                                             <td class="text-center">{{$cour->libelle}}</td>
                                             <td class="text-center">{{$cour->semestre}}</td>
-                                            <td class="text-center">L1</td>
+                                           
+                                            <td class="text-center">
+                                                @foreach ($cour->classes as $cl )
+                                                    {{$cl->code}} 
+                                                @endforeach
+                                            </td>
+                                            <td class="text-center">{{$cour->user->nom}}</td>
                                             <td class="text-center">{{$cour->volumeHoraire}} </td>
                                             <td class="text-center">{{$cour->effectue}}</td>
                                             <td class="text-center">{{$cour->restant}}</td>

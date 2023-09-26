@@ -18,7 +18,7 @@
             <form action="{{url('admin/cours/creer')}}" method="post">
                   {{@csrf_field()}}
                 <div class="card-body">
-                   <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-6">
                             <label >Code<span style="color: red">*</span> : </label>
                             <input type="text" class="form-control"  name = "code" placeholder="votre prenom" required>
@@ -28,9 +28,9 @@
                             <input type="text" class="form-control" name="intitule" placeholder="votre nom" required>
                         </div>
                    </div>
-                    <div class="row">
+                   <div class="row">
                         <div class="col-sm-6">
-
+                
                             <div class="form-group">
                                 <label>Semestre<span style="color: red">*</span> : </label>
                                 <select class="form-control" name="semestre">
@@ -44,22 +44,39 @@
                             <label >Volume total<span style="color: red">*</span> : </label>
                             <input type="number" class="form-control" name="volume" placeholder="votre nom" required>
                         </div>
-                    </div>
-                    
-                    <div class="row">
+                   </div>
+                   <div class="row">
+
+                    <div class="col-sm-6">
+                
                         <div class="form-group">
-                            <label>Classes <span style="color: red">*</span> :</label> 
-                           @foreach ($classes as $classe)
-                                <div class="form-check">
-                                    <input class="form-check-input" value="{{$classe->id}}" name="classe[]" type="checkbox">
-                                    <label class="form-check-label">{{$classe->intitule}}</label>
-                                </div>
-                           @endforeach
-                           
-                            </div>
+                            <label>Enseignant<span style="color: red">*</span> : </label>
+                            <select class="form-control" name="enseignant">
+                                <option value=""></option>
+                                @foreach ($enseignants as $enseignant)
+                                    @if ($enseignant->role->intitule == 'enseignant')
+                                        <option value="{{$enseignant->id}}">{{$enseignant->nom}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                </div>
+
+                    <div class="col-sm-6">
+            
+                        <div class="form-group">
+                            <label>Classes <span style="color: red">*</span> : </label>
+                            @foreach ($classes as $cl )
+                                <div class="form-check ml-4">
+                                    <input class="form-check-input" type="checkbox" value="{{$cl->id}}" name="classe[]">
+                                    <label class="form-check-label" >{{$cl->intitule}}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+               
+
+                    </div>
 
                 <div class="card-footer mx-5 mb-2">
                     <button type="submit" class="btn btn-primary col-11">Enregistrer</button>
@@ -68,3 +85,4 @@
         </div>
     </div>
 @endsection
+

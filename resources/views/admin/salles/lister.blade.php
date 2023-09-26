@@ -34,9 +34,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($salles as $salle)
+                                      @foreach ($salles as $key=>$salle)
                                             <tr >
-                                            <td class="text-center">{{$salle->id}}</td>
+                                            <td class="text-center">{{$key + 1}}</td>
                                             <td class="text-center">{{$salle->nomSalle}}</td>
                                             <td class="text-center">{{$salle->capacite}}</td>
                                             

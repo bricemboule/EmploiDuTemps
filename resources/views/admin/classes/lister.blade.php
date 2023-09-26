@@ -36,9 +36,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($classes as $classe)
+                                      @foreach ($classes as $key=>$classe)
                                             <tr >
-                                            <td class="text-center">{{$classe->id}}</td>
+                                            <td class="text-center">{{$key + 1}}</td>
                                             <td class="text-center">{{$classe->code}}</td>
                                             <td class="text-center">{{$classe->intitule}}</td>
                                             <td class="text-center">{{$classe->cycle}}</td>

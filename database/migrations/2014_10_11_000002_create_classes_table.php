@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('code'); 
             $table->string('intitule');
             $table->string('cycle');
+            $table->boolean('status')->default(true);
             $table->foreignId('specialite_id')->constrained()
                                                 ->onUpdate('cascade')
                                                 ->onDelete('cascade');    

@@ -14,11 +14,6 @@
                     </div>
         </div>
         <div class="card card-success">
-            <div class="card-header">
-                <h3 class="card-title">Nouvel utilisateur</h3>
-            </div>
-
-
             <form action="{{url('admin/utilisateur/creer')}}" method="post">
                   {{@csrf_field()}}
                 <div class="card-body">

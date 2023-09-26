@@ -14,9 +14,7 @@
                     </div>
         </div>
         <div class="card card-success">
-            <div class="card-header">
-                <h3 class="card-title">Nouvelle classe</h3>
-            </div>
+           
 
 
             <form action="{{url('admin/classe/creer')}}" method="post">

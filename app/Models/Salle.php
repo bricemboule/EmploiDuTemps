@@ -14,4 +14,14 @@ class Salle extends Model
         'capacite',
         'status'
     ];
+
+    public function classes(){
+
+        return $this->belongsToMany(Classe::class, 'est_programmers','salle_id','classe_id');
+    }
+
+    public function lessons(){
+
+        return $this->hasMany(Lesson::class);
+    }
 }

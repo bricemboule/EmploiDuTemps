@@ -38,19 +38,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($users as $user)
-                                            <tr >
-                                            <td>{{$user->id}}</td>
-                                            <td>{{$user->photo}}</td>
-                                            <td>{{$user->nom}} {{$user->prenom}}</td>
-                                            <td><span>{{$user->telephone}}</span></td>
-                                            <td>{{$user->email}} </td>
-                                            <td>{{$user->login}}</td>
-                                            <td>{{$user->role->intitule}}</td>
-                                            <td>
-                                                <a href="{{url('admin/utilisateur/modifier/'.$user->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a href="{{url('admin/utilisateur/supprimer/'.$user->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
-                                            </td>
+                                      @foreach ($users as $key=>$user)
+                                            <tr>
+                                                
+                                                <td>{{$key +1}}</td>
+                                                <td><img src="{{asset('/images/'.$user->photo)}}" width="50px" height="35px" /></td>
+                                                <td>{{$user->nom}} {{$user->prenom}}</td>
+                                                <td>{{$user->telephone}}</td>
+                                                <td>{{$user->email}} </td>
+                                                <td>{{$user->login}}</td>
+                                                <td>{{$user->role->intitule}}</td>
+                                                <td>
+                                                    <a href="{{url('admin/utilisateur/modifier/'.$user->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{url('admin/utilisateur/supprimer/'.$user->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                                </td>
                                         </tr>
                                       @endforeach
 

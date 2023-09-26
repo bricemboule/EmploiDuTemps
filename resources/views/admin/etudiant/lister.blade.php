@@ -46,11 +46,11 @@
                                             <td><img src="{{asset('/images/'.$etudiant->photo)}}" width="50px" height="35px" /></td>
                                             <td>{{$etudiant->matricule}}</td>
                                             <td>{{$etudiant->nom}} {{$etudiant->prenom}}</td>
-                                            <td>{{$etudiant->date}}</td>
+                                            <td>{{$etudiant->dateNaissance}}</td>
                                             <td>{{$etudiant->lieu}}</td>
                                             <td>{{$etudiant->telephone}}</td>
                                             <td>{{$etudiant->email}} </td>
-                                            <td></td>
+                                            <td>{{$etudiant->classe->code}}</td>
                                             <td>
                                                 <a href="{{url('admin/etudiant/modifier/'.$etudiant->id)}}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 <a href="{{url('admin/etudiant/supprimer/'.$etudiant->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
