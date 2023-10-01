@@ -1,13 +1,19 @@
-@extends('layouts.app')
-
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
     <div class="content-wrapper p-2" style="min-height: 339.816px; font-family: 'Times New Roman', Times, serif;">
         <div class="content">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header text-center">
-                            <img src="{{asset('images/logo.jpg')}}" alt="Ici le logo de l'ecole" width="300px">
+                          
                             <p style="font-family: 'Times New Roman', Times, serif; color:#00BFFF"><i>L'ecole autrement</i></p>
                             <hr color="#00BFFF"/>
                            <h2>Emploi de temps {{ $classe->intitule}} : {{$semaine->libelle}}</h2>
@@ -23,26 +29,26 @@
         
                             <table class="table table-bordered" style="border: 3px solid">
                                 <thead>
-                                    <th width="125" class="text-center"  style="border: 2px solid">Horaires</th>
+                                    <th width="100" class="text-center">Horaires</th>
                                     @foreach($weekDays as $day)
-                                        <th class="text-center" style="border: 2px solid">{{ $day }}</th>
+                                        <th class="text-center" >{{ $day }}</th>
                                     @endforeach
                                 </thead>
                                 <tbody>
                                     @foreach($calendarData as $time => $days)
                                         <tr >
-                                            <td class="text-center" style="border: 2px solid">
+                                            <td class="align-middle text-center">
                                                 {{ $time }}
                                             </td>
                                             @foreach($days as $value)
                                                 @if (is_array($value))
-                                                    <td rowspan="{{ $value['rowspan'] }}" class="align-middle text-center" style="background-color:#f0f0f0;border: 2px solid">
+                                                    <td rowspan="{{ $value['rowspan'] }}" class="align-middle text-center" style="background-color:#f0f0f0">
                                     
                                                         {{$value['cours']}}<br>
                                                         
                                                     </td>
                                                 @elseif ($value === 1)
-                                                    <td style="border: 2px solid"></td>
+                                                    <td ></td>
                                                 @endif
                                             @endforeach
                                         </tr>
@@ -67,5 +73,5 @@
         </div>
 
     </div>
-    
-@endsection
+</body>
+</html>

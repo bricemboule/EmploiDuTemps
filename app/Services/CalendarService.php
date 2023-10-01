@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Classe;
 use App\Models\Lesson;
 use App\Models\Semaine;
 use App\Models\Suivre;
@@ -14,7 +15,15 @@ class CalendarService
     {
      
         $emploiDuTemps = [];
-        $timeRange = (new TimeService)->generateTimeRange(config('app.calendar.start_time'), config('app.calendar.end_time'));
+        $classe = Classe::where('id', $id)->first();
+
+        if ( $classe->code == 'L1' || $classe->code == 'L2' || $classe->code == 'L3'){
+            $timeRange = (new TimeService)->generateTimeRange(config('app.licence.debut'), config('app.licence.fin'));
+
+        }else{
+
+            $timeRange = (new TimeService)->generateTimeRange(config('app.master.debut'), config('app.master.fin'));
+        }
         $semaine = Semaine::where('status', '1')->first();
         $courSuivre = Suivre::where('classe_id', $id)->get(['cour_id']);
         
@@ -74,7 +83,16 @@ class CalendarService
     {
      
         $calendarData = [];
-        $timeRange = (new TimeService)->generateTimeRange(config('app.calendar.start_time'), config('app.calendar.end_time'));
+        $classe = Classe::where('id', $id)->first();
+
+        if ( $classe->code == 'L1' || $classe->code == 'L2' || $classe->code == 'L3'){
+            $timeRange = (new TimeService)->generateTimeRange(config('app.licence.debut'), config('app.licence.fin'));
+
+        }else{
+
+            $timeRange = (new TimeService)->generateTimeRange(config('app.master.debut'), config('app.master.fin'));
+        }
+        
         $semaine = Semaine::where('status', '1')->first();
     
         $lessons   = Lesson::with('classe', 'user')

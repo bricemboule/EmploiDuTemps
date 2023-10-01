@@ -11,7 +11,7 @@
                             <button type="button" class="btn btn-primary"> <a href="{{url('scolarite/emploiDuTemps/ajouter')}}" class="text-white"><i class="fa-solid fa-plus"></i> Nouvelle leçon</a> </button>
                     </div>
                     <div class="ml-3">
-                        <button type="button" class="btn btn-info"> <a href="{{url('scolarite/emploiDuTemps/L1/calendrier')}}" class="text-white"> <i class="fa-regular fa-calendar-days"></i> Calendrier</a> </button>
+                        <button type="button" class="btn btn-info"> <a href="{{url('scolarite/emploiDuTemps/calendrier/L1')}}" class="text-white"> <i class="fa-regular fa-calendar-days"></i> Calendrier</a> </button>
                     </div>
                 </div>
             

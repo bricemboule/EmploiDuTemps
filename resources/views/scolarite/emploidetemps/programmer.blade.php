@@ -34,7 +34,7 @@
                                 <i class="ion ion-person-add"></i>
                             </div>
                             <a href="{{url('scolarite/emploiDuTemps/L1')}}" class="small-box-footer"> Lister <i class="fas fa-arrow-circle-right"></i></a>
-                            <a href="{{url('scolarite/emploiDuTemps/afficher')}}" class="small-box-footer"> Calendrier <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{url('scolarite/emploiDuTemps/calendrier/L1')}}" class="small-box-footer"> Calendrier <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
 

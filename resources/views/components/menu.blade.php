@@ -341,7 +341,102 @@
                             </a>
                         </li>
                     </ul>
-</li>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('logout')}}" class="nav-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>
+                            Se déconnecter
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @break
+
+    @case('gestionnaire stock')
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        
+                <li class="nav-item menu-open">
+                    <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+        
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{url('logout')}}" class="nav-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>
+                            Se déconnecter
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @break
+
+    @case('gestionnaire cahier de texte')
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        
+                <li class="nav-item menu-open">
+                    <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+        
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{url('logout')}}" class="nav-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>
+                            Se déconnecter
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @break
+
+    @case('directeur general')
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        
+                <li class="nav-item menu-open">
+                    <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+        
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{url('logout')}}" class="nav-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>
+                            Se déconnecter
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @break
+    @case('directeur academique')
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        
+                <li class="nav-item menu-open">
+                    <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+        
+                </li>
+
                 <li class="nav-item">
                     <a href="{{url('logout')}}" class="nav-link">
                         <i class="fa-solid fa-right-from-bracket"></i>

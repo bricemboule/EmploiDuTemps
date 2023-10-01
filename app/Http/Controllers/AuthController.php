@@ -19,30 +19,29 @@ class AuthController extends Controller
         $remember = !empty($request->remember) ? true : false;
         if(Auth::attempt(['login'=>$request->login, 'password'=>$request->password], true)){
            
-
             switch (Auth::user()->role->intitule) {
-                case 'admin' : 
+                case 'admin': 
                     return redirect('admin/dashboard');
                     break;
-                case 'directeur general' :
+                case 'directeur general':
                     return redirect('dg/dashboard');
                     break;
-                case 'directeur academique' :
+                case 'directeur academique':
                     return redirect('dac/dashboard');
                     break;
-                case 'gestionnaire scolarite' :
+                case 'gestionnaire scolarite':
                     return redirect('scolarite/dashboard');
                     break;
-                case 'gestionnaire stock' :
+                case 'gestionnaire stock':
                     return redirect('stock/dashboard');
                     break;
-                case 'etudiant' :
+                case 'etudiant':
                     return redirect('etudiant/dashboard');
                     break;
-                case 'enseignant' :
+                case 'enseignant':
                     return redirect('enseignant/dashboard');
                     break;
-                case 'gestionnaire cahier texte' :
+                case 'gestionnaire cahier texte':
                     return redirect('cahierTexte/dashboard');
                     break;
                 default :

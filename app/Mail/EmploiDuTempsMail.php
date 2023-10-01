@@ -42,7 +42,7 @@ class EmploiDuTempsMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'scolarite.emploidetemps.etudiant',
+            view: 'scolarite.emploidetemps.emploiParClasse',
             with : $this->data
         );
     }
@@ -55,10 +55,10 @@ class EmploiDuTempsMail extends Mailable
     public function attachments(): array
     {
         return [
-            //Attachment :: fromStorage($this->data['path'])
+            Attachment :: fromStorage($this->data['path'])
 
-            Attachment::fromData(fn () => $this->data['pdf']->output(), 'emploidutemps.pdf')
-                ->withMime('application/pdf'),
+            /*Attachment::fromData(fn () => $this->data['pdf']->output(), 'emploidutemps.pdf')
+                ->withMime('application/pdf'),*/
         ];
     }
 }

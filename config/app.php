@@ -168,6 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -183,11 +184,17 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
     ])->toArray(),
 
-    'calendar' => [
-        'start_time'    => '08:00',
-        'end_time'      => '21:00',
+    'licence' => [
+        'debut'    => '08:00',
+        'fin'      => '17:00',
+    ],
+
+    'master' => [
+        'debut'    => '08:00',
+        'fin'      => '21:00',
     ],
 
 ];

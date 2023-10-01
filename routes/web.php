@@ -107,7 +107,7 @@ Route::group(['middleware'=> 'directeurAcademique'], function(){
     Route::get('dac/dashboard', [DashboardController::class, 'dashboard']);
 });
 
-Route::group(['middleware'=> 'directeurGenerale'], function(){
+Route::group(['middleware'=> 'directeurGeneral'], function(){
     Route::get('dg/dashboard', [DashboardController::class, 'dashboard']);
 });
 
@@ -122,7 +122,7 @@ Route::group(['middleware'=> 'gestionnaireScolarite'], function(){
     //Route::get('scolarite/timetable/L1', [TimeTableController::class, 'ListerL1']);
     Route::get('scolarite/emploiDuTemps/L1', [LessonController::class, 'lister']);
     Route::get('scolarite/emploiDuTemps/afficher', [CalendarController::class, 'index']);
-    Route::get('scolarite/emploiDuTemps/L1/calendrier', [CalendarController::class, 'calendrier']);
+    Route::get('scolarite/emploiDuTemps/calendrier/L1', [CalendarController::class, 'calendrier']);
     Route::get('scolarite/emploiDuTemps/envoyer/etudiant/', [LessonController::class, 'etudiant']);
     Route::get('scolarite/emploiDuTemps/envoyer/enseignant/', [LessonController::class, 'enseignant']);
     Route::get('scolarite/emploiDuTemps/envoyer/etudiant/{id}', [CalendarController::class, 'etudiant']);

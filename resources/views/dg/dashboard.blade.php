@@ -23,13 +23,13 @@
 
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>1</h3>
+                                    <h3>{{$user}}</h3>
                                     <p><h3><i class="fa-solid fa-user-plus"></i> Utilisateur</h3></p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="{{url('admin/utilisateur/lister')}}" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
 
@@ -37,13 +37,13 @@
 
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53</h3>
-                                    <p><h3><i class="fa-solid fa-chalkboard-user"></i>Enseignants</h3></p>
+                                    <h3>{{$enseignant}}</h3>
+                                    <p><h3><i class="fa-solid fa-chalkboard-user"></i> Enseignants</h3></p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="{{url('admin/utilisateur/lister')}}" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
 
@@ -52,12 +52,12 @@
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>4</h3>
-                                    <p><h3><i class="fa-solid fa-pen-to-square"></i>Classes</h3></p>
+                                    <p><h3><i class="fa-solid fa-pen-to-square"></i> Classes</h3></p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="#" class="small-box-footer"> Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
 
@@ -84,7 +84,7 @@
 
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53</h3>
+                                    <h3>{{$etudiant}}</h3>
                                     <p> <h3><i class="fa-solid fa-graduation-cap"></i> Etudiants</h3> </p>
                                 </div>
                                 <div class="icon">
@@ -99,7 +99,7 @@
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>10</h3>
-                                    <p><h3><i class="fa-solid fa-pen-to-square"></i>Cours</h3></p>
+                                    <p><h3><i class="fa-solid fa-pen-to-square"></i> Cours</h3></p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
@@ -107,6 +107,40 @@
                                 <a href="#" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+
+                        
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-6">
+
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{$salle}}</h3>
+                                    <p> <h3><i class="fa-solid fa-landmark"></i> Salles</h3> </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="{{url('admin/salle/lister')}}" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-6">
+
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>{{$specialite}}</h3>
+                                    <p> <h3><i class="fa-solid fa-landmark"></i> Specialités</h3> </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="{{url('admin/salle/lister')}}" class="small-box-footer">Plus d'infos <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        
 
                         
 
