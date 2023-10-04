@@ -34,8 +34,8 @@ class ScolariteClasseController extends Controller
 
     public function lister(){
 
-        $classes = Classe::where('status', '1')->get();
-        return view('admin.classes.lister', compact('classes'));
+        $classes = Classe::where('status', '1')->orderByRaw('code')->get();
+        return view('scolarite.classes.lister', compact('classes'));
 
     }
 

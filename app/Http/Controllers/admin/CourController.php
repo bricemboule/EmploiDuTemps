@@ -13,7 +13,8 @@ class CourController extends Controller
 {
     public function ajouter(){
 
-        $classes = Classe::where('status', '1')->get();
+        $classes = Classe::where('status', '1')->orderByRaw('code')->get();
+        dd($classes);
         $enseignants = User::with('role')->where('status', '1')->get();
 
         return view('admin.cours.ajouter', compact(['classes', 'enseignants']));

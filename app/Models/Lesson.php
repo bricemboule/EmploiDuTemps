@@ -24,7 +24,7 @@ class Lesson extends Model
 
     public function getDifferenceAttribute()
     {
-        return Carbon::parse($this->debut)->diffInMinutes($this->fin);
+        return Carbon::parse($this->fin)->diffInMinutes($this->debut);
 
     }
 

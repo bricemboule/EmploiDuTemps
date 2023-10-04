@@ -9,7 +9,7 @@
                         <div class="card-header text-center">
                             <img src="{{asset('images/logo.jpg')}}" alt="Ici le logo de l'ecole" width="300px">
                             <p style="font-family: 'Times New Roman', Times, serif; color:#00BFFF"><i>L'ecole autrement</i></p>
-                            <hr color="#00BFFF"/>
+                            <hr color="#00BFFF" style="size: 3"/>
                            <h2>Emploi de temps {{ $classe->intitule}} : {{$semaine->libelle}}</h2>
                           
                         </div>

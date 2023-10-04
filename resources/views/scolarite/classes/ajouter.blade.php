@@ -21,7 +21,7 @@
                    <div class="row">
                         <div class="form-group col-sm-6">
                             <label >Code : </label>
-                            <select class="form-control" name="code">
+                            <select class="form-control" name="code" onchange="choix(this.value)" id="code">
                                     <option value=""></option>
                                     <option value="L1">L1</option>
                                     <option value="L2">L2</option> 
@@ -36,18 +36,7 @@
                         </div>
                          <div class="form-group col-sm-6">
                             <label >Intitule : </label>
-                            <select class="form-control" name="intitule">
-                                    <option value=""></option>
-                                    <option value="Licence 1">Licence 1</option>
-                                    <option value="Licence 2">Licence 2</option> 
-                                    <option value="Licence 3">Licence 3</option>
-                                    <option value="Master 1 ACTUARIAT">Master 1 ACTUARIAT</option> 
-                                    <option value="Master 1 INGENIERIE FINANCIERE">Master 1 INGENIERIE FINANCIERE</option>
-                                    <option value="Master 1 STATISTIQUE ET BIG DATA">Master 1 STATISTIQUE ET BIG DATA</option>
-                                    <option value="Master 2 ACTUARIAT">Master 2 ACTUARIAT</option> 
-                                    <option value="Master 2 INGENIERIE FINANCIERE">Master 2 INGENIERIE FINANCIERE</option>
-                                    <option value="Master 2 STATISTIQUE ET BIG DATA">Master 2 STATISTIQUE ET BIG DATA</option>
-                            </select>
+                            <input type="text" id="intitule" class="form-control" name="intitule" placeholder="intitule" required>
                         </div>
                    </div>
                     <div class="row">
@@ -55,21 +44,12 @@
 
                             <div class="form-group">
                                 <label>Cycle : </label>
-                                <select class="form-control" name="cycle">
-                                    <option value=""></option>
-                                    <option value="LICENCE">LICENCE</option>
-                                    <option value="LICENCE">MASTER</option> 
-                                </select>
+                                <input type="text" id="cycle" class="form-control" name="cycle" placeholder="cycle" required>
                             </div>
                         </div>
                         <div class="form-group col-sm-6">
                             <label >Specialité : </label>
-                             <select class="form-control" name="specialite">
-                                    <option value=""></option>
-                                    @foreach ($specialites as $specialite)
-                                         <option value="{{$specialite->intitule}}">{{$specialite->intitule}}</option>
-                                    @endforeach
-                                </select>
+                            <input type="text" id="specialite" class="form-control" name="specialite" placeholder="specialite" required>
                         </div>
                     </div>
                   
@@ -83,3 +63,64 @@
         </div>
     </div>
 @endsection
+
+<script>
+
+    function choix(){
+        if (document.getElementById('code').value == 'L1'){
+            
+        }
+
+        switch (document.getElementById('code').value) {
+            case 'L1':
+                document.getElementById('intitule').value = 'Licence 1';
+                document.getElementById('cycle').value = 'LICENCE';
+                document.getElementById('specialite').value = 'Mathematiques'
+                break;
+            case 'L2' :
+                document.getElementById('intitule').value = 'Licence 2';
+                document.getElementById('cycle').value = 'LICENCE';
+                document.getElementById('specialite').value = 'Mathematiques'
+                break;
+            
+            case 'L3' :
+                document.getElementById('intitule').value = 'Licence 3';
+                document.getElementById('cycle').value = 'LICENCE';
+                document.getElementById('specialite').value = 'Mathematiques'
+                break;
+
+            case 'M1 ACT' :
+                document.getElementById('intitule').value = 'Master 1 actuariat';
+                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('specialite').value = 'Actuariat'
+                break;
+            case 'M1 INF' :
+                document.getElementById('intitule').value = 'Master 1 Ingenierie Financiere';
+                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('specialite').value = 'Ingenierie Financiere'
+                break; 
+            case 'M1 SBD' :
+                document.getElementById('intitule').value = 'Master 1 Statistique et Big Data';
+                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('specialite').value = ' Statistique et Big Data'
+                break; 
+            case 'M2 ACT' :
+                document.getElementById('intitule').value = 'Master 2 actuariat';
+                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('specialite').value = 'Actuariat'
+                break;
+            case 'M2 INF' :
+                document.getElementById('intitule').value = 'Master 2 Ingenierie Financiere';
+                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('specialite').value = 'Ingenierie Financiere'
+                break; 
+            case 'M2 SBD' :
+                document.getElementById('intitule').value = 'Master 2 Statistique et Big Data';
+                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('specialite').value = ' Statistique et Big Data'
+                break;      
+            default:
+                break;
+        }
+    }
+</script>

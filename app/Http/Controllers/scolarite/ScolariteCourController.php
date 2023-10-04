@@ -13,7 +13,7 @@ class ScolariteCourController extends Controller
 {
     public function ajouter(){
 
-        $classes = Classe::where('status', '1')->get();
+        $classes = Classe::where('status', '1')->orderByRaw('code')->get();
         $enseignants = User::with('role')->where('status', '1')->get();
 
         return view('scolarite.cours.ajouter', compact(['classes', 'enseignants']));

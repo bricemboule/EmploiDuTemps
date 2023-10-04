@@ -6,6 +6,11 @@
             <div className="container-fluid"> 
                 <br/>   
                 <br/>  
+                <div style="margin-bottom: 10px;" class="d-flex flex-row justify-content">
+                    <div >
+                            <button type="button" class="btn btn-primary"> <a href="{{url('scolarite/classe/ajouter')}}" class="text-white"><i class="fa-solid fa-plus"></i> Ajouter une classe</a> </button>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">

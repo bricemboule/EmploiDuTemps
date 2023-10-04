@@ -29,8 +29,8 @@ class EmploiDuTempsMail extends Mailable
      */
     public function envelope(): Envelope
     {
+       
         return new Envelope(
-
             from: new Address('brice.mboule@facsciences-uy1.cm'),
             subject: $this->data['subject'],
         );
@@ -41,8 +41,10 @@ class EmploiDuTempsMail extends Mailable
      */
     public function content(): Content
     {
+
+        
         return new Content(
-            view: 'scolarite.emploidetemps.emploiParClasse',
+            view: 'scolarite.emploidetemps.test',
             with : $this->data
         );
     }
@@ -54,11 +56,10 @@ class EmploiDuTempsMail extends Mailable
      */
     public function attachments(): array
     {
+       
         return [
-            Attachment :: fromStorage($this->data['path'])
-
-            /*Attachment::fromData(fn () => $this->data['pdf']->output(), 'emploidutemps.pdf')
-                ->withMime('application/pdf'),*/
+            Attachment::fromData(fn () => $this->data['pdf']->output(), 'emploidutemps.pdf')
+               ->withMime('application/pdf'),
         ];
     }
 }

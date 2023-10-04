@@ -126,7 +126,7 @@ Route::group(['middleware'=> 'gestionnaireScolarite'], function(){
     Route::get('scolarite/emploiDuTemps/envoyer/etudiant/', [LessonController::class, 'etudiant']);
     Route::get('scolarite/emploiDuTemps/envoyer/enseignant/', [LessonController::class, 'enseignant']);
     Route::get('scolarite/emploiDuTemps/envoyer/etudiant/{id}', [CalendarController::class, 'etudiant']);
-    Route::get('scolarite/emploiDuTemps/envoyer/enseignant/{id}', [CalendarController::class, 'enseignant']);
+    Route::get('scolarite/emploiDuTemps/envoyer/enseignant/{id}', [CalendarController::class, 'pdf']);
     Route::get('scolarite/emploiDuTemps/visualiser/etudiant/{id}', [CalendarController::class, 'visualiser']);
     Route::get('scolarite/emploiDuTemps/visualiserEnseignant/{id}', [CalendarController::class, 'visualiserEnseignant']);
     Route::get('scolarite/emploiDuTemps/L1/modifier/{id}', [LessonController::class, 'modifier']);
