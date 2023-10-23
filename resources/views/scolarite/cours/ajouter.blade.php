@@ -16,38 +16,14 @@
 
         <div class="card card-success">
 
-            <form action="{{url('admin/cours/creer')}}" method="post">
+            <form action="{{url('scolarite/cours/creer')}}" method="post">
                 {{@csrf_field()}}
               <div class="card-body">
                   <div class="row">
-                      <div class="form-group col-sm-6">
-                          <label >Code<span style="color: red">*</span> : </label>
-                          <input type="text" class="form-control"  name = "code" placeholder="votre prenom" required>
-                      </div>
-                       <div class="form-group col-sm-6">
-                          <label >Intitule<span style="color: red">*</span> : </label>
-                          <input type="text" class="form-control" name="intitule" placeholder="votre nom" required>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-sm-6">
-              
-                          <div class="form-group">
-                              <label>Semestre<span style="color: red">*</span> : </label>
-                              <select class="form-control" name="semestre">
-                                  <option value=""></option>
-                                  <option value="SEMESTRE 1">SEMESTRE 1</option>
-                                  <option value="SEMESTRE 2">SEMESTRE 2</option> 
-                              </select>
-                          </div>
-                      </div>
-                      <div class="form-group col-sm-6">
-                          <label >Volume total<span style="color: red">*</span> : </label>
-                          <input type="number" class="form-control" name="volume" placeholder="votre nom" required>
-                      </div>
-                  </div>
-                  <div class="row">
-      
+                    <div class="form-group col-sm-6">
+                        <label >Intitule<span style="color: red">*</span> : </label>
+                        <input type="text" class="form-control" name="intitule" placeholder="votre nom" required>
+                    </div>
                     <div class="col-sm-6">
                 
                         <div class="form-group">
@@ -62,6 +38,25 @@
                             </select>
                         </div>
                     </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-6">
+              
+                          <div class="form-group">
+                              <label>Semestre<span style="color: red">*</span> : </label>
+                              <select class="form-control" name="semestre">
+                                  <option value=""></option>
+                                  <option value="Semestre 1">Semestre 1</option>
+                                  <option value="Semestre 2">Semestre 2</option> 
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group col-sm-6">
+                          <label >Volume total<span style="color: red">*</span> : </label>
+                          <input type="number" class="form-control" name="volume" placeholder="votre nom" required>
+                      </div>
+                  </div>
+                  <div class="row">
       
                     <div class="col-sm-6">
             
@@ -86,6 +81,12 @@
            </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    $(function(){
+
+    });
 @endsection
 
 

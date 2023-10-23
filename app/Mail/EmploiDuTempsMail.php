@@ -19,8 +19,10 @@ class EmploiDuTempsMail extends Mailable
      * Create a new message instance.
      */
     public $data;
+    public $pdf;
     public function __construct($data)
     {
+      //$this->pdf = $pdf;
         $this->data = $data;
     }
 
@@ -29,7 +31,6 @@ class EmploiDuTempsMail extends Mailable
      */
     public function envelope(): Envelope
     {
-       
         return new Envelope(
             from: new Address('brice.mboule@facsciences-uy1.cm'),
             subject: $this->data['subject'],
@@ -41,8 +42,6 @@ class EmploiDuTempsMail extends Mailable
      */
     public function content(): Content
     {
-
-        
         return new Content(
             view: 'scolarite.emploidetemps.test',
             with : $this->data
@@ -56,10 +55,12 @@ class EmploiDuTempsMail extends Mailable
      */
     public function attachments(): array
     {
-       
+
         return [
-            Attachment::fromData(fn () => $this->data['pdf']->output(), 'emploidutemps.pdf')
+            Attachment::fromData(fn () => $this->data['pdf']->output(), $this->data['cours'].'.pdf')
                ->withMime('application/pdf'),
+
+               //Attachment::fromPath($this->data['pdf'])->as('emploidetemps.pdf')
         ];
     }
 }

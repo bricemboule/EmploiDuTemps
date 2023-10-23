@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('cours', function (Blueprint $table) {
             $table->id();
             $table->string('libelle');
-            $table->string('code');
             $table->string('semestre');
             $table->integer('volumeHoraire');
             $table->float('effectue')->default(0);

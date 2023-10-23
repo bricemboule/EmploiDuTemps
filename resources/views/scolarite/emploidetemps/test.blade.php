@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    
     <p>{{ $body}}</p>
+    <br>
+    <p> Bonne reception. Cordialement </p>
 </body>
 </html>

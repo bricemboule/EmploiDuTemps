@@ -19,13 +19,24 @@
                   {{@csrf_field()}}
                 <div class="card-body">
                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <label >Code : </label>
-                            <input type="text" class="form-control" value="{{$cour->code}}"  name = "code" placeholder="votre prenom" required>
-                        </div>
                          <div class="form-group col-sm-6">
                             <label >Intitule : </label>
                             <input type="text" class="form-control" value="{{$cour->libelle}}" name="intitule" placeholder="votre nom" required>
+                        </div>
+
+                        <div class="col-sm-6">
+                
+                            <div class="form-group">
+                                <label>Enseignant<span style="color: red">*</span> : </label>
+                                <select class="form-control" name="enseignant">
+                                    <option value="{{$cour->user->nom}}">{{$cour->user->nom}}</option>
+                                    @foreach ($enseignants as $enseignant)
+                                        @if ($enseignant->role->intitule == 'enseignant')
+                                            <option value="{{$enseignant->id}}">{{$enseignant->nom}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                    </div>
                     <div class="row">
@@ -35,8 +46,8 @@
                                 <label>Semestre : </label>
                                 <select class="form-control" name="semestre">
                                     <option value="{{$cour->code}}">{{$cour->semestre}}</option>
-                                    <option value="SEMESTRE 1">SEMESTRE 1</option>
-                                    <option value="SEMESTRE 2">SEMESTRE 2</option> 
+                                    <option value="Semestre 1">Semestre 1</option>
+                                    <option value="Semestre 2">Semestre 2</option> 
                                 </select>
                             </div>
                         </div>

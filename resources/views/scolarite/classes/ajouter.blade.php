@@ -15,7 +15,7 @@
         </div>
         <div class="card card-success">
 
-            <form action="{{url('scolarite/classe/creer')}}" method="post">
+            <form action="{{url('scolarite/classe/creer')}}" method="post" id="formClass">
                   {{@csrf_field()}}
                 <div class="card-body">
                    <div class="row">
@@ -57,12 +57,14 @@
                 </div>
 
                 <div class="card-footer mx-5 mb-2">
-                    <button type="submit" class="btn btn-primary col-11">Enregistrer</button>
+                    <button type="submit" class="btn btn-primary col-11" id="addClass">Enregistrer</button>
                 </div>
             </form>
         </div>
     </div>
 @endsection
+
+@section('scripts')
 
 <script>
 
@@ -74,49 +76,49 @@
         switch (document.getElementById('code').value) {
             case 'L1':
                 document.getElementById('intitule').value = 'Licence 1';
-                document.getElementById('cycle').value = 'LICENCE';
+                document.getElementById('cycle').value = 'Licence';
                 document.getElementById('specialite').value = 'Mathematiques'
                 break;
             case 'L2' :
                 document.getElementById('intitule').value = 'Licence 2';
-                document.getElementById('cycle').value = 'LICENCE';
+                document.getElementById('cycle').value = 'Licence';
                 document.getElementById('specialite').value = 'Mathematiques'
                 break;
             
             case 'L3' :
                 document.getElementById('intitule').value = 'Licence 3';
-                document.getElementById('cycle').value = 'LICENCE';
+                document.getElementById('cycle').value = 'Licence';
                 document.getElementById('specialite').value = 'Mathematiques'
                 break;
 
             case 'M1 ACT' :
                 document.getElementById('intitule').value = 'Master 1 actuariat';
-                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('cycle').value = 'Master';
                 document.getElementById('specialite').value = 'Actuariat'
                 break;
             case 'M1 INF' :
                 document.getElementById('intitule').value = 'Master 1 Ingenierie Financiere';
-                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('cycle').value = 'Master';
                 document.getElementById('specialite').value = 'Ingenierie Financiere'
                 break; 
             case 'M1 SBD' :
                 document.getElementById('intitule').value = 'Master 1 Statistique et Big Data';
-                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('cycle').value = 'Master';
                 document.getElementById('specialite').value = ' Statistique et Big Data'
                 break; 
             case 'M2 ACT' :
                 document.getElementById('intitule').value = 'Master 2 actuariat';
-                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('cycle').value = 'Master';
                 document.getElementById('specialite').value = 'Actuariat'
                 break;
             case 'M2 INF' :
                 document.getElementById('intitule').value = 'Master 2 Ingenierie Financiere';
-                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('cycle').value = 'Master';
                 document.getElementById('specialite').value = 'Ingenierie Financiere'
                 break; 
             case 'M2 SBD' :
                 document.getElementById('intitule').value = 'Master 2 Statistique et Big Data';
-                document.getElementById('cycle').value = 'MASTER';
+                document.getElementById('cycle').value = 'Master';
                 document.getElementById('specialite').value = ' Statistique et Big Data'
                 break;      
             default:
@@ -124,3 +126,5 @@
         }
     }
 </script>
+    
+@endsection

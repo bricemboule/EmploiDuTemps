@@ -71,13 +71,13 @@ class LessonController extends Controller
 
     public function etudiant(){
 
-        $classes = Classe::where('status', '1')->get();
+        $classes = Classe::where('status', '1')->orderByRaw('code')->get();
 
         return view('scolarite.emploidetemps.etudiant', compact('classes'));
     }
 
     public function enseignant(){
-        $classes = Classe::where('status', '1')->get();
+        $classes = Classe::where('status', '1')->orderByRaw('code')->get();
 
         return view('scolarite.emploidetemps.enseignant',compact('classes'));
     }

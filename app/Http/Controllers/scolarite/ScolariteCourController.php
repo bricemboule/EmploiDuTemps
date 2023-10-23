@@ -28,7 +28,6 @@ class ScolariteCourController extends Controller
     public function inserer(Request $request){
        
         $cour = new Cour();
-        $cour->code = $request->code;
         $cour->libelle = $request->intitule;
         $cour->semestre = $request->semestre;
         $cour->volumeHoraire = $request->volume;
@@ -37,7 +36,7 @@ class ScolariteCourController extends Controller
 
         $cour->save();
 
-        $c = Cour::where('code', $request->code)->first();
+        $c = Cour::where('libelle', $request->intitule)->first();
 
         if(!empty($request->classe)){
             foreach ($request->classe as $cl){
@@ -56,16 +55,16 @@ class ScolariteCourController extends Controller
 
     public function modifier($id){
 
-        $cour= Cour::find($id)->first();
-        $classes = Classe::where('status', '1')->get();
+        $cour= Cour::where('id',$id)->first();
+        $classes = Classe::where('status', '1')->orderByRaw('code')->get();
+        $enseignants = User::with('role')->where('status', '1')->get();
 
-        return view('scolarite.cours.modifier', compact(['cour','classes']));
+        return view('scolarite.cours.modifier', compact(['cour','classes','enseignants']));
     }
 
     public function edit($id, Request $request){
 
-        $cour = Cour::find($id)->first();
-        $cour->code = $request->code;
+        $cour = Cour::where('id',$id)->first();
         $cour->libelle = $request->intitule;
         $cour->semestre = $request->semestre;
         $cour->volumeHoraire = $request->volume;

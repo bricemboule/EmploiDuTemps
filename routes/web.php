@@ -146,8 +146,8 @@ Route::group(['middleware'=> 'gestionnaireScolarite'], function(){
     Route::post('scolarite/cours/delete/{id}', [ScolariteCourController::class, 'delete']);
 
      //Classes
-     Route::get('scolarite/classe/ajouter', [ScolariteClasseController::class, 'ajouter']);
-     Route::post('scolarite/classe/creer', [ScolariteClasseController::class, 'inserer']);
+     Route::get('scolarite/classe/ajouter', [ScolariteClasseController::class, 'ajouter'])->name('classe.ajouter');
+     Route::post('scolarite/classe/creer', [ScolariteClasseController::class, 'inserer'])->name('store');
      Route::get('scolarite/classe/modifier/{id}', [ScolariteClasseController::class, 'modifier']);
      Route::post('scolarite/classe/modifier/{id}', [ScolariteClasseController::class, 'edit']);
      Route::get('scolarite/classe/lister', [ScolariteClasseController::class, 'lister']);

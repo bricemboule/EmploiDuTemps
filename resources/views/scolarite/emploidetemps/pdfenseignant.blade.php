@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -30,26 +31,27 @@
         
                             <table class="table table-bordered" style="border: 2px solid">
                                 <thead>
-                                    <th width="125" class="align-middle text-center" style="border-right: 1px solid;height:35px">Horaires</th>
-                                    @foreach($weekDays as $day)
-                                        <th class="align-middle text-center" style="border-right: 1px solid;height:35px">{{ $day }}</th>
+                                    <th width="125" class="align-middle text-center" style="border-right: 1px solid; height:35px">Horaires</th>
+                                    @foreach($jours as $day)
+                                        <th class="align-middle text-center" style="border-right: 1px solid;height:35px">{{$day}}</th>
                                     @endforeach
                                 </thead>
                                 <tbody style="border: 1px solid">
                                     @foreach($calendarData as $time => $day)
                                         <tr style="border: 1px solid">
-                                            <td class="align-middle text-center" style="border-right: 1px solid;height:35px">
+                                            <td class="align-middle text-center" style="border-right: 1px solid; height:35px">
                                                 {{ $time }}
                                             </td>
                                             @foreach($day as $value)
                                                 @if (is_array($value))
                                                     <td rowspan="{{ $value['rowspan'] }}" class="align-middle text-center" style="background-color:#f0f0f0;border-right: 1px solid;height:35px">
-                                                        <br>
-                                                        Cours : {{$value['cours']}}<br>
-                                                        
+                                                        {{ $value['classe'] }}<br>
+                                                        Cours : {{$value['cours']}} <br>
+                                                        Volume effectue : {{$value['effectue']}} <br>
+                                                        Volume restant : {{$value['restant']}}  
                                                     </td>
-                                                @elseif ($value === 1)
-                                                    <td style="border-right: 1px solid;height:35px"></td>
+                                                @elseif ($value == 1)
+                                                    <td style="border-right: 1px solid; height:35px"></td> 
                                                 @endif
                                             @endforeach
                                         </tr>

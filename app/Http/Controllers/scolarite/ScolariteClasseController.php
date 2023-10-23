@@ -27,6 +27,9 @@ class ScolariteClasseController extends Controller
         $classe->cycle = $request->cycle;
         $classe->specialite_id = $specialite->id;
         $classe->save();
+        /*return response()->json([
+            'status' => 200,
+        ]);*/
 
         return redirect('scolarite/classe/lister');
 
@@ -35,6 +38,42 @@ class ScolariteClasseController extends Controller
     public function lister(){
 
         $classes = Classe::where('status', '1')->orderByRaw('code')->get();
+        $sorti = '';
+
+        if ($classes->count() > 0) {
+            $sorti .= '<table class= "table table-striped align-middle">
+            
+                        <thead>
+                            <tr>
+                                <td> N </td>
+                                <td> Code </td>
+                                <td> Intitule </td>
+                                <td> Cycle </td>
+                                <td> Specialite </td>
+                                <td> Actions </td>
+                            </tr>
+                        </thead>
+                        <tbody>';
+
+                        foreach($classes as $key=>$cl){
+                            $sorti .= '<tr>
+                                            <td>' .$key. '</td>
+                                            <td>' .$cl->code. '</td>
+                                            <td>' .$cl->intitule. '</td>
+                                            <td>' .$cl->cycle. '</td>
+                                            <td>' .$cl->specialite. '</td>
+                                            <td> 
+                                                <a href="#" id=" '.$cl->id.' " class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editClasse"> <i  class="fa-solid fa-pen-to-square"></i> </a>
+                                                <a href="#" id=" '.$cl->id.' " class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editClasse"> <i   class="fa-solid fa-trash-can"></i> </a>                                       
+                                            </td>
+                                        <tr>';
+                        }
+            $sorti .= '</tbody></table>';
+            //echo $sorti; 
+        }else {
+            echo '<h1 class="text-center text-secondary my-5"> Aucune classe deja cree </h1>';
+        }
+
         return view('scolarite.classes.lister', compact('classes'));
 
     }

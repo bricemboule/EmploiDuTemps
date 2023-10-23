@@ -40,7 +40,8 @@
                                                     <td rowspan="{{ $value['rowspan'] }}" class="align-middle text-center" style="background-color:#f0f0f0; border: 2px solid">
                                                         {{ $value['classe'] }}<br>
                                                         Cours : {{$value['cours']}}<br>
-                                                        
+                                                        Volume effectue : {{$value['effectue']}} <br>
+                                                        Volume restant : {{$value['restant']}} 
                                                     </td>
                                                 @elseif ($value === 1)
                                                     <td style="border: 2px solid"></td>

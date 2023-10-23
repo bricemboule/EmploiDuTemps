@@ -12,7 +12,6 @@ class Cour extends Model
 
     protected $fillable = [
         'libelle',
-        'code',
         'semestre',
         'volumeHoraire',
         'effectue',

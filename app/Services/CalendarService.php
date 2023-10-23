@@ -13,8 +13,8 @@ class CalendarService
 {
     public function generateCalendarData($weekDays,$id)
     {
-     
-        $emploiDuTemps = [];
+        $emploiDuTemps = []; $calendarData = [];
+       
         $classe = Classe::where('id', $id)->first();
 
         if ( $classe->code == 'L1' || $classe->code == 'L2' || $classe->code == 'L3'){
@@ -29,26 +29,17 @@ class CalendarService
         
         $cours = Cour::whereIn('id',$courSuivre)->where('status','1')->get();
 
-        $lessons   = Lesson::with('classe', 'user')
-                            ->where('classe_id', $id)
-                            ->where('semaine_id', $semaine->id)
-                            ->get();
-
-       
-
-       foreach ($cours as $cour){
+       foreach($cours as $cour){
             
-            $calendarData = [];
             foreach ($timeRange as $time)
             {
                 $timeText = $time['debut'] . ' - ' . $time['fin'];
                 $calendarData[$timeText] = [];
 
-                foreach ($weekDays as $index => $day)
+                foreach ($weekDays as $day)
                 {
                     $lesson = Lesson::with('classe', 'user')
                                         ->where('classe_id', $id)
-                                        ->where('semaine_id', $semaine->id)
                                         ->where('cour_id', $cour->id)
                                         ->where('jour', $day)
                                         ->where('debut', $time['debut'])
@@ -60,10 +51,12 @@ class CalendarService
                             'classe'   => $lesson->classe->intitule,
                             'enseignant' => $lesson->user->nom,
                             'cours'=> $lesson->cour->libelle,
+                            'effectue' => $lesson->cour->effectue,
+                            'restant' => $lesson->cour->restant,
                             'rowspan'=> $lesson->difference / 60 ?? ''
                         ]);
                     }
-                    else if (!$lessons->where('jour', $day)->where('debut', '<', $time['debut'])->where('fin', '>=', $time['fin'])->count())
+                    else if (!Lesson::with('classe', 'user')->where('classe_id', $id)->where('semaine_id', $semaine->id)->where('jour', $day)->where('debut', '<', $time['debut'])->where('fin', '>=', $time['fin'])->count())
                     {
                         array_push($calendarData[$timeText], 1);
                     }
@@ -75,6 +68,7 @@ class CalendarService
             }
 
             array_push($emploiDuTemps, $calendarData);
+            $calendarData =[];
            
        }
 
@@ -168,18 +162,10 @@ class CalendarService
 
             foreach ($weekDays as $index => $day)
             {
-               /* $lesson = Lesson::with('classe', 'user')
-                                    ->where('classe_id', $classe->id)
-                                    ->where('semaine_id', $semaine->id)
-                                    ->where('cour_id', $cour->id)
-                                    ->where('jour', $day)
-                                    ->where('debut', $time['debut'])
-                                    ->first();*/
 
-                $lesson = Lesson::with('classe', 'user')
+                $lesson = Lesson::with('user')
                                     ->where('classe_id', $classe->id)
                                     ->where('cour_id', $cour->id)
-                                    ->where('semaine_id', $semaine->id)
                                     ->where('debut', $time['debut'])
                                     ->where('jour', $day)
                                     ->first();
@@ -190,6 +176,8 @@ class CalendarService
                         'classe'   => $lesson->classe->intitule,
                         'enseignant' => $lesson->user->nom,
                         'cours'=> $lesson->cour->libelle,
+                        'effectue' => $lesson->cour->effectue,
+                        'restant' => $lesson->cour->restant,
                         'rowspan'=> $lesson->difference / 60 ?? ''
                     ]);
                 }
